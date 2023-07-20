@@ -31,7 +31,8 @@ pipeline {
         script {
           // tag is used internally only doesn't matter what you call it really
           //sh 'docker run yessrerich/docker-react npm run test -- --coverage'
-          sh 'docker run au79stein/docker-react npm run test -- --coverage'
+          //sh 'docker run au79stein/docker-react npm run test -- --coverage'
+          sh 'docker run -e CI=true au79stein/docker-react npm run test -- --coverage'
         }
       }
     }

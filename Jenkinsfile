@@ -1,22 +1,21 @@
 pipeline {
   agent any
-
   stages {
-    stage ('Build') {
+    stage("verify tooling") {
       steps {
-        sh 'echo "building..."'
+        sh '''
+          docker version
+          docker info
+          docker compose version
+          curl --version
+          jq --version
+        '''
       }
     }
-
-    stage ('Test') {
+    // clean up all docker files that are there
+    stage('Prune Docker data') {
       steps {
-        sh 'echo "testing..."'
-      }
-    }
-
-    stage ('Deploy') {
-      steps {
-        sh 'echo "deploying..."'
+        sh 'docker system prune -a --volumes -f'
       }
     }
   }

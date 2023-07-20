@@ -22,7 +22,7 @@ pipeline {
       steps {
         container('builder') {
           script {
-            sh "docker build -t yessrerich/docker-react -f Dockerfile.dev ."
+            sh 'docker build -t yessrerich/docker-react -f Dockerfile.dev .'
           }
         }
       }

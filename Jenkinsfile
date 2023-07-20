@@ -21,14 +21,17 @@ pipeline {
     stage('Build image') {
       steps {
         script {
-          sh 'docker build -t yessrerich/docker-react -f Dockerfile.dev .'
+          //sh 'docker build -t yessrerich/docker-react -f Dockerfile.dev .'
+          sh 'docker build -t au79stein/docker-react -f Dockerfile.dev .'
         }
       }
     }
     stage('Testing') {
       steps {
         script {
-          sh 'docker run yessrerich/docker-react npm run test -- --coverage'
+          // tag is used internally only doesn't matter what you call it really
+          //sh 'docker run yessrerich/docker-react npm run test -- --coverage'
+          sh 'docker run au79stein/docker-react npm run test -- --coverage'
         }
       }
     }

@@ -18,5 +18,14 @@ pipeline {
         sh 'docker system prune -a --volumes -f'
       }
     }
+    stage('Build image') {
+      steps {
+        container('builder') {
+          script {
+            docker build -t yessrerich/docker-react -f Dockerfile.dev .
+          }
+        }
+      }
+    }
   }
 }

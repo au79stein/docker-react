@@ -20,11 +20,16 @@ pipeline {
     }
     stage('Build image') {
       steps {
-        //container('builder') {
-          script {
-            sh 'docker build -t yessrerich/docker-react -f Dockerfile.dev .'
-          }
-        //}
+        script {
+          sh 'docker build -t yessrerich/docker-react -f Dockerfile.dev .'
+        }
+      }
+    }
+    stage('Testing') {
+      steps {
+        script {
+          sh 'docker run yessrerich/docker-react npm run test -- --coverage'
+        }
       }
     }
   }

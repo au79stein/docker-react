@@ -20,11 +20,11 @@ pipeline {
     }
     stage('Build image') {
       steps {
-        #container('builder') {
+        //container('builder') {
           script {
             sh 'docker build -t yessrerich/docker-react -f Dockerfile.dev .'
           }
-        #}
+        //}
       }
     }
   }
